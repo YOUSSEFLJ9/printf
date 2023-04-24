@@ -11,7 +11,7 @@ int _printf(const char *format, ...)
 	va_list argms;
 	int counter = 0;
 	char c;
-	size_t lnstring;
+	char *str;
 
 	va_start(argms, format);
 	while ((c = *format++) != '\0')
@@ -29,8 +29,14 @@ int _printf(const char *format, ...)
 				counter++;
 				break;
 			case 's':
-				lnstring = _printstr(va_arg(argms, const char *));
-				counter += lnstring;
+				str = va_arg(argms, char *);
+				if (str == NULL)
+				{
+					_printstr("(null)");
+					counter += 6;
+				}
+				else
+					counter += _printstr(str);
 				break;
 			}
 		}

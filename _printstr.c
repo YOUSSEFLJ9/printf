@@ -10,10 +10,7 @@ int _printstr(const char *str)
 {
 	int len = 0;
 
-	if (str != NULL)
-	{
-		len = _strlen(str);
-		write(MYSTDOUT_FILENO, str, len);
-	}
+	len = _strlen(str);
+	write(MYSTDOUT_FILENO, str, len);
 	return (len);
 }
