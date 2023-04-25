@@ -9,4 +9,5 @@ int _putchar(char c);
 int _strlen(const char *str);
 int _printf(const char *format, ...);
 int _printstr(const char *str);
+int _printint(int n);
 #endif
