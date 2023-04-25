@@ -10,9 +10,8 @@ int _printf(const char *format, ...)
 {
 	va_list args;
 	int count = 0;
-	char c;
-	char str;
 
+	va_start(args, format);
 	count = _print_switch(format, args);
 	va_end(args);
 	return (count);
