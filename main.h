@@ -10,5 +10,5 @@ int _strlen(const char *str);
 int _printf(const char *format, ...);
 int _printstr(const char *str);
 int _printint(int n);
-int _print_switch(const char *format, va_list args)
+int _print_switch(const char *format, va_list args);
 #endif
