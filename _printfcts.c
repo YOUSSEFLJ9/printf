@@ -18,3 +18,18 @@ int _printstr(char *buffer, int *buflong)
 	*buflong = 0;
 	return (count);
 }
+/**
+ * print_string - Prints a string
+ * @args: The arguments list
+ *
+ * Return: The number of characters printed
+ */
+int print_string(va_list args)
+{
+    char *str = va_arg(args, char *);
+
+    if (!str)
+        str = "(null)";
+
+    return (_putstr(str));
+}
