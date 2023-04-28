@@ -23,7 +23,6 @@ typedef struct struc
 
 int _printstr(char *buffer, int *buflong);
 int _printf(const char *format, ...);
-char *_print_number(int n);
 int _putchar(va_list args, char *buffer);
 int _prcntcase(va_list args, char *buffer);
 int _strcase(va_list args, char *buffer);
