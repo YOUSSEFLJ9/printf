@@ -1,17 +1,30 @@
 #ifndef MAIN_H
 #define MAIN_H
+
+#include <stdarg.h>
 #include <stdio.h>
-#include <stdlib.h>
 #include <unistd.h>
-#include <unistd.h>
-#include <limits.h>
+
+#define BUFFSIZE 1024
 #define MYSTDOUT_FILENO 1
-#define BUFFERMAX 1024
-int _putchar(char c);
-int _strlen(char *str);
+#define UNUSED(x) (void)(x)
+
+/**
+  *struct struc - this struct take char from the format
+  *@c: char reprsent the char after %
+  *
+  *@func: is a function that match with the c
+  */
+typedef struct struc
+{
+	char c;
+	int (*func)(va_list, char*);
+} specifier;
+
+int _printstr(char *buffer, int *buflong);
 int _printf(const char *format, ...);
-int _printstr(char *str);
-int _printint(int n);
-char *_strncpy(char *dest, char *src, int n);
-int _print_switch(const char *format, ...);
+int _putchar(va_list args, char *buffer);
+int _prcntcase(va_list args, char *buffer);
+int _strcase(va_list args, char *buffer);
+int _handlagrs(const char *format, int  *i, va_list args, char *buffer);
 #endif
