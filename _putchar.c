@@ -1,15 +1,16 @@
 #include "main.h"
-#include <unistd.h>
 /**
- *_putchar - writes the character c to stdout
- * @c: The character to print
- *
+ *_putchar - writes the character c
+ *@args: The list of args
+ *@buffer: number in array to print
  * Return: On success 1.
- * On error, -1 is returned, and errno is set appropriately.
  */
-int _putchar(char c)
-
+int _putchar(va_list args, char *buffer)
 {
-	write(MYSTDOUT_FILENO, &c, 1);
-	return (1);
+	int c = va_arg(args, int);
+
+	buffer[0] = c;
+	buffer[1] = '\0';
+
+	return (write(MYSTDOUT_FILENO, buffer, 1));
 }

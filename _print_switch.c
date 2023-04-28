@@ -4,47 +4,50 @@
 /**
 * _print_switch - Select and print the corresponding format specifier
 * @format: A string containing zero or more format specifiers
-* @args: The va_list of arguments passed to _printf()
 * Return: The total number of characters printed, excluding the null byte
 */
 int _print_switch(const char *format, ...)
 {
 	va_list args;
 	int count = 0;
+	char c;
+	char *str;
 
 	va_start(args, format);
-	while (*format != '\0')
+	while ((c = *format++) != '\0')
 	{
-		if (*format == '%')
+		if (c == '%')
 		{
-		format++;
-		switch (*format)
+		switch (*format++)
 		{
 			case 'c':
-				count += _putchar(va_arg(args, int));
+				 _putchar(va_arg(args, int));
+				 count++;
 				break;
 			case 's':
-				count += _printstr(va_arg(args, char *));
+				str = (va_arg(args, char *));
+				if (str == NULL)
+					count += _printstr("(NULL)");
+				else
+					count += _printstr(str);
 				break;
 			case 'd':
 			case 'i':
-				count += _printint(va_arg(args, int));
+				count++;
+				_printint(va_arg(args, int));
 				break;
 			case '%':
-				count += _putchar('%');
+				_putchar('%');
+				count++;
 				break;
 			case '\0':
 				return (-1);
-			default:
-				count += _putchar('%');
-				count += _putchar(*format);
-				break;
 		}
 		}
 		else
 		{
-			count += _putchar(*format);
-			format++;
+			_putchar(c);
+			count++;
 		}
 	}
 	va_end(args);

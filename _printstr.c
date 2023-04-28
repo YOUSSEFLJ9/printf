@@ -2,15 +2,19 @@
 
 /**
   *_printstr - this fuction print the strng given
-  *@str: is a pointer to string
-  *
-  *Return: the lenght of the string
+  *@buffer: string to be print
+  *@buflong: the lenght of the string
+  *Return: the counter of the chars printed
   */
-int _printstr(const char *str)
+int _printstr(char *buffer, int *buflong)
 {
-	int len = 0;
+	int count = 0;
 
-	len = _strlen(str);
-	write(MYSTDOUT_FILENO, str, len);
-	return (len);
+	if (*buflong > 0)
+	{
+		write(MYSTDOUT_FILENO, &buffer[0], *buflong);
+	}
+	count = *buflong;
+	*buflong = 0;
+	return (count);
 }
