@@ -16,7 +16,10 @@ int _handlagrs(const char *format, int *i, va_list args, char *buffer)
 		{'c', _putchar},
 		{'s', _strcase},
 		{'%', _prcntcase},
+		{'i', _print_integer},
+		{'d', _print_integer},
 		{'\0', NULL}
+
 	};
 
 	while (speci[k].c != '\0')

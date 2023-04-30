@@ -3,6 +3,7 @@
 
 #include <stdarg.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <unistd.h>
 
 #define BUFFSIZE 1024
@@ -21,6 +22,8 @@ typedef struct struc
 	int (*func)(va_list, char*);
 } specifier;
 
+int _writenum(char *buffer,int negat, int i);
+int _print_integer(va_list args, char *buffer);
 int _printstr(char *buffer, int *buflong);
 int _printf(const char *format, ...);
 int _putchar(va_list args, char *buffer);
