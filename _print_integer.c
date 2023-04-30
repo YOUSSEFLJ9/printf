@@ -38,17 +38,14 @@ int _print_integer(va_list args, char *buffer)
 		buffer[i--] = '0';
 	buffer[BUFFSIZE - 1] = '0';
 	number = n;
-	number = n;
 	if (n < 0)
 	{
 		number = (unsigned int)((-1) * n);
 		negat = 1;
 	}
-	while (number > 0)
-	{
+	for (; number > 0; number /= 10)
 		buffer[i--] = (number % 10) + '0';
-		number /= 10;
-	}
+
 	i++;
 	return (_writenum(buffer, negat, i));
 }
