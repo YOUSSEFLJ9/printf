@@ -8,7 +8,7 @@
  */
 int _writenum(char *buffer, int negat, int i)
 {
-	char sign;
+	char sign = '\0';
 	int len = BUFFSIZE - i - 1;
 
 	if (negat != 0)
@@ -18,7 +18,7 @@ int _writenum(char *buffer, int negat, int i)
 	}
 	if (sign)
 		buffer[--i] = sign;
-	return (write(1, &buffer[i], len));
+	return (write(MYSTDOUT_FILENO, &buffer[i], len));
 
 }
 
@@ -31,22 +31,23 @@ int _writenum(char *buffer, int negat, int i)
 int _print_integer(va_list args, char *buffer)
 {
 	int i = BUFFSIZE - 2, negat = 0;
-	long int n = va_arg(args, long int);
-	unsigned long num;
+	int n = va_arg(args, int);
+	unsigned int number;
 
 	if (n == 0)
 		buffer[i--] = '0';
 	buffer[BUFFSIZE - 1] = '0';
-	num = (unsigned long)n;
+	number = n;
+	number = n;
 	if (n < 0)
 	{
-		num = (unsigned long)((-1) * n);
+		number = (unsigned int)((-1) * n);
 		negat = 1;
 	}
-	while (num > 0)
+	while (number > 0)
 	{
-		buffer[i--] = (num % 10) + '0';
-		num /= 10;
+		buffer[i--] = (number % 10) + '0';
+		number /= 10;
 	}
 	i++;
 	return (_writenum(buffer, negat, i));
