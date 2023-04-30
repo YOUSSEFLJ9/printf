@@ -1,5 +1,11 @@
 #include "main.h"
-
+/**
+ *_writenum - this function write the number in buffer
+ *@negat: a check if the number is negative
+ *@i: sing on the number starts on the buffer
+ *@buffer: string of digit be printed
+ *Return: the number of char printed
+ */
 int _writenum(char *buffer, int negat, int i)
 {
 	char sign;
@@ -17,9 +23,9 @@ int _writenum(char *buffer, int negat, int i)
 }
 
 /**
- * print_integer - Prints an integer
+ * _print_integer - Prints an integer
  * @args: The arguments list
- * @buffer: strig
+ * @buffer: string of digit be printed
  * Return: The number of characters printed
  */
 int _print_integer(va_list args, char *buffer)
